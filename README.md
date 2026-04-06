@@ -1,15 +1,15 @@
-# 🩺 Diabetes Prediction — ML Classification Project
-## 📌 Project Goal
+# Diabetes Prediction — ML Classification Project
+## Project Goal
 
 Разработка модели машинного обучения для прогнозирования наличия диабета на основе демографических и медицинских показателей.
 
 Цель проекта — построить модель, пригодную для **первичного медицинского скрининга**, с минимизацией пропущенных случаев заболевания.
 
-📊 Dataset Overview
+Dataset Overview
 
 Данные содержат:
 
-🔢 **Числовые признаки**
+**Числовые признаки**
 
 - `age`
 
@@ -19,7 +19,7 @@
 
 - `blood_glucose_level`
 
-🏷 **Категориальные признаки**
+**Категориальные признаки**
 
 - `gender`
 
@@ -29,11 +29,11 @@
 
 - `smoking_history`
 
-🎯 **Target**
+**Target**
 
 - `diabetes` (0 — No, 1 — Yes)
 
-## 🔍 Exploratory Data Analysis
+## Exploratory Data Analysis
 ### Корреляция числовых признаков с диабетом
 
 | Feature             | Correlation |
@@ -63,7 +63,7 @@
 
 - Пол практически не влияет на вероятность диабета.
 
-## ⚙ Preprocessing Pipeline
+## Preprocessing Pipeline
 
 - Удалён редкий класс `gender = other`
 
@@ -77,8 +77,8 @@
 
 - Полный pipeline построен через sklearn.Pipeline
 
-## 🤖 Models
-### 1️⃣ Logistic Regression (Baseline)
+## Models
+### 1️ Logistic Regression (Baseline)
 
 - ROC-AUC: 0.886
 
@@ -86,7 +86,7 @@
 
 - Использовалась как интерпретируемый baseline
 
-### 2️⃣ LightGBM (Final Model)
+### 2️ LightGBM (Final Model)
 
 - ROC-AUC: 0.91
 
@@ -94,7 +94,7 @@
 
 - Более устойчив к нелинейностям
 
-## 🎯 Threshold Optimization
+## Threshold Optimization
 
 Так как задача связана с медицинским скринингом, приоритет — **минимизация пропущенных случаев диабета (False Negatives)**.
 
@@ -104,9 +104,9 @@
 | -------------------- | --------- | -------- | ------------------------- |
 | Max F1               | 0.96      | 0.70     | строгая модель            |
 | High Recall (~0.95)  | 0.40      | 0.95     | агрессивный скрининг      |
-| ✅ Final (Compromise) | **0.46**  | **0.92** | сбалансированный скрининг |
+| Final (Compromise) | **0.46**  | **0.92** | сбалансированный скрининг |
 
-### 📌 Final Selected Threshold
+### Final Selected Threshold
 ```
 Precision (diabetes=1): 0.46  
 Recall (diabetes=1):    0.92  
@@ -121,7 +121,7 @@ ROC-AUC:                0.91
 
 - Подходит для сценария первичного медицинского скрининга
 
-## 🏥 Practical Application
+## Practical Application
 
 Модель может использоваться как:
 
@@ -131,9 +131,9 @@ ROC-AUC:                0.91
 
 - Risk scoring модель для клинического скрининга
 
-⚠ Модель не предназначена для постановки диагноза без клинического подтверждения.
+!!! Модель не предназначена для постановки диагноза без клинического подтверждения.
 
-### 📈 Key Insights
+### Key Insights
 
 - Биохимические показатели — основные предикторы
 
@@ -143,7 +143,7 @@ ROC-AUC:                0.91
 
 - ROC-AUC недостаточно для выбора финальной модели — важен анализ стоимости ошибок
 
-### 🛠 Tech Stack
+### Tech Stack
 
 - Python
 
@@ -155,7 +155,7 @@ ROC-AUC:                0.91
 
 - Matplotlib / Seaborn
 
-### 🚀 Future Improvements
+### Future Improvements
 
 - Cross-validation
 
@@ -167,7 +167,7 @@ ROC-AUC:                0.91
 
 - Deployment as API
 
-### 📌 Conclusion
+### Conclusion
 
 В проекте разработана модель прогнозирования диабета с использованием LightGBM, демонстрирующая ROC-AUC 0.91. Порог классификации адаптирован под задачу медицинского скрининга, что позволило достичь recall ≈ 0.92 при приемлемом precision ≈ 0.46.
 
